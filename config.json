@@ -61,6 +61,13 @@
                     }
                   }
             
+                },
+                {
+                    "type": "mixed",
+                    "listen": "127.0.0.1",
+                    "listen_port": 2080,
+                    "sniff": true,
+                    "users": []
                 }
             ],
 
@@ -133,8 +140,6 @@
     ],
 
     "route": {
-        "auto_detect_interface": true,
-        "final": "Proxy",
         "rules": [
           {
             "type": "logical",
@@ -164,7 +169,11 @@
             ],
             "outbound": "direct"                
           }
+         
         ],
+        "auto_detect_interface":true,
+        "final":"Proxy",
+
         "rule_set": [
             {
               "tag": "geosite-category-ads-all",
