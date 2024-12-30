@@ -1,0 +1,205 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "info",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "proxyDns",
+                "address": "tls://dns.google",
+                "address_resolver": "localDns",
+                "detour": "Proxy"
+            },
+            {
+                "tag": "localDns",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "localDns",
+                "disable_cache": true
+            },
+            {
+              "rule_set": "geosite-category-ads-all",
+              "server": "block"
+            },
+            {
+              "rule_set":"geosite-gfw",
+              "server": "proxyDns"
+            }
+            
+          ],
+        "final": "localDns",
+        "disable_cache": true,
+        "strategy": "ipv4_only"
+
+    },
+    "inbounds": {
+                "type": "tun",
+                "tag": "tun-in",
+                "address": "172.18.0.1/30",
+                "mtu": 9000,
+                "auto_route": true,
+                "strict_route": true,
+                "sniff": true,
+                "endpoint_independent_nat": false,
+                "stack": "system",
+                "platform": {
+                    "http_proxy": {
+                      "enabled": true,
+                      "server": "127.0.0.1",
+                      "server_port": 2080
+                    }
+                  }
+            
+                },
+
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "type": "selector",
+            "outbounds": [
+                   "us1",
+                   "us2"
+                ]
+        },
+        {
+            "tag": "AdBlock",
+            "type": "selector",
+            "outbounds": [
+              "block",
+              "direct"
+            ]
+        },
+        {
+            "tag": "dns-out",
+            "type": "dns"
+        },
+        {
+            "tag": "direct",
+            "type": "direct"
+            
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "tag": "us1",
+            "type": "vless",
+            "server": "104.16.12.71",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          },
+          {
+            "tag": "US2",
+            "type": "vless",
+            "server": "172.67.156.159",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          }
+
+        
+    ],
+
+    "route": {
+        "auto_detect_interface": true,
+        "final": "Proxy",
+        "rules": [
+          {
+            "type": "logical",
+            "mode": "or",
+            "rules": [
+              {
+                "port": 53
+              },
+              {
+                "protocol": "dns"
+              }
+            ],
+            "outbound": "dns-out"
+          },
+          {
+            "rule_set": "geosite-category-ads-all",
+            "outbound": "AdBlock"
+          },
+          {
+            "ip_is_private": true,
+            "outbound": "direct"
+          },
+          {
+            "rule_set": [                       
+              "geoip-cn",
+              "geosite-cn"                        
+            ],
+            "outbound": "direct"                
+          }
+        ],
+        "rule_set": [
+            {
+              "tag": "geosite-category-ads-all",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+              "download_detour": "direct"
+            },
+            {
+                "tag": "geoip-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+                "download_detour": "direct"
+              },
+              {
+                "tag": "geosite-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+                "download_detour": "direct"
+              }
+            ] 
+    }
+
+
+
+         
+              
+    
+                 
+                 
+                 
+            
+         
+
+   
+
+}
