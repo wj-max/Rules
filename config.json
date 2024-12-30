@@ -43,7 +43,7 @@
         "strategy": "ipv4_only"
 
     },
-    "inbounds": {
+    "inbounds":[ {
                 "type": "tun",
                 "tag": "tun-in",
                 "address": "172.18.0.1/30",
@@ -61,7 +61,8 @@
                     }
                   }
             
-                },
+                }
+            ]
 
     "outbounds": [
         {
