@@ -186,8 +186,15 @@
                 "format": "binary",
                 "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
                 "download_detour": "direct"
+              },
+              {                                                                                            
+                "tag": "geosite-gfw",                                                          
+                "type": "remote",                                                                          
+                "format": "binary",                                                                                 
+                 "url": "https://mirror.kingred.eu.org/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/gfw.srs",
+                "download_detour": "direct"                                                                         
               }
-            ] 
+        ] 
     }
 
 
