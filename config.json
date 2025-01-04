@@ -159,15 +159,40 @@
             }
           },
           {
-            "tag": "tw",
+            "tag": "us3",
             "type": "vless",
-            "server": "1.162.18.226",
-            "server_port": 37898,
-            "uuid": "ec302de4-6b3d-4f03-a228-3c6d303ed370",
-            "flow": "xtls-rprx-vision",
+            "server": "172.67.65.116",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
             "packet_encoding": "xudp",
-            "network": "tcp"
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          },
+          {
+            "tag": "us3",
+            "type": "vless",
+            "server": "104.16.9.98",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
           }
+    
     ],
 
     "route": {
