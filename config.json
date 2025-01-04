@@ -166,23 +166,8 @@
             "uuid": "ec302de4-6b3d-4f03-a228-3c6d303ed370",
             "flow": "xtls-rprx-vision",
             "packet_encoding": "xudp",
-            "network": "tcp",
-            "tls": {
-              "enabled": true,
-              "disable_sni": false,
-              "server_name": "www.yahoo.com",
-              "utls": {
-                "enabled": false,
-                "fingerprint": "chrome"
-              },
-               "reality": {
-                "enabled": true,
-                "public_key": "v6uWJJmVGFPd0K040QK3PJHCbPc74kXFoQmAhpu30jQ",
-                "short_id": "e12d7fdb"
-              }
-            }
-
-         }
+            "network": "tcp"
+          }
     ],
 
     "route": {
