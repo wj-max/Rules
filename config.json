@@ -99,7 +99,8 @@
             "type": "selector",
             "outbounds": [
                    "us1",
-                   "us2"
+                   "us2",
+                   "tw"
                 ]
         },
         {
@@ -156,9 +157,28 @@
               "early_data_header_name": "Sec-WebSocket-Protocol",
               "max_early_data": 2560
             }
-          }
+          },
+          {
+            "tag": "tw",
+            "type": "vless",
+            "server": "1.162.18.226",
+            "server_port": 37898,
+            "uuid": "ec302de4-6b3d-4f03-a228-3c6d303ed370",
+            "flow": "xtls-rprx-vision",
+            "packet_encoding": "xudp",
+            "network": "tcp",
+            "tls": {
+              "enabled": true,
+              "disable_sni": false,
+              "server_name": "www.yahoo.com",
+               "reality": {
+                "enabled": true,
+                "public_key": "v6uWJJmVGFPd0K040QK3PJHCbPc74kXFoQmAhpu30jQ",
+                "short_id": "e12d7fdb"
+              }
+            }
 
-        
+         }
     ],
 
     "route": {
