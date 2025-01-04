@@ -171,6 +171,10 @@
               "enabled": true,
               "disable_sni": false,
               "server_name": "www.yahoo.com",
+              "utls": {
+                "enabled": true,
+                "fingerprint": "chrome"
+              },
                "reality": {
                 "enabled": true,
                 "public_key": "v6uWJJmVGFPd0K040QK3PJHCbPc74kXFoQmAhpu30jQ",
