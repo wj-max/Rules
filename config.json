@@ -100,7 +100,9 @@
             "outbounds": [
                    "us1",
                    "us2",
-                   "tw"
+                   "us3",
+                   "us4"
+
                 ]
         },
         {
@@ -176,7 +178,7 @@
             }
           },
           {
-            "tag": "us3",
+            "tag": "us4",
             "type": "vless",
             "server": "104.16.9.98",
             "server_port": 8880,
