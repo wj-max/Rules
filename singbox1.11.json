@@ -1,0 +1,270 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "info",
+        "timestamp": true
+    },
+    "experimental": {
+      "clash_api": {
+        "external_controller": "127.0.0.1:9090",
+        "external_ui": "ui",
+        "secret": "",
+        "external_ui_download_url": "https://mirror.kingred.eu.org/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+        "external_ui_download_detour": "direct",
+        "default_mode": "rule"
+      },
+      "cache_file": {
+        "enabled": true,
+        "store_fakeip": false
+      }
+    },
+    "dns": {
+        "servers": [
+          {
+            "tag": "proxyDns",
+            "address": "tls://8.8.8.8",
+            "detour": "Proxy"
+          },
+          {
+            "tag": "localDns",
+            "address": "https://223.5.5.5/dns-query",
+            "detour": "direct"
+          }
+          
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "action": "route",
+                "server": "localDns",
+                "disable_cache": true
+            },
+            { 
+                "rule_set": "geosite-category-ads-all",
+                "action": "reject",
+                "method": "drop"
+            },
+            {
+                "action": "route",
+                "rule_set": "geosite-geolocation-!cn",
+                "server": "proxyDns"
+            },
+            {
+                "action": "route",
+                "clash_mode": "global",
+                "server": "proxyDns"
+            },
+            {
+                "action": "route",
+                "clash_mode": "direct",
+                "server": "localDns"
+            }
+
+            
+          ],
+        "action": "route", 
+        "final": "localDns",
+        "disable_cache": true,
+        "strategy": "ipv4_only"
+
+    },
+    "inbounds":[ {
+                "type": "tun",
+                "address": "172.18.0.1/30",
+                "mtu": 9000,
+                "auto_route": true,
+                "strict_route": true,
+                "endpoint_independent_nat": false,
+                "stack": "system",
+                "platform": {
+                    "http_proxy": {
+                      "enabled": true,
+                      "server": "127.0.0.1",
+                      "server_port": 2080
+                    }
+                  }
+            
+                },
+                {
+                    "type": "mixed",
+                    "listen": "127.0.0.1",
+                    "listen_port": 2080,
+                    "users": []
+                }
+            ],
+
+    "outbounds": [
+        {
+            "tag": "Proxy",
+            "type": "selector",
+            "outbounds": [
+                   "us1",
+                   "us2",
+                   "us3",
+                   "us4"
+
+                ]
+        },
+  
+       
+        {
+            "tag": "direct",
+            "type": "direct"
+            
+        },
+       
+        {
+            "tag": "us1",
+            "type": "vless",
+            "server": "104.16.12.71",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          },
+          {
+            "tag": "us2",
+            "type": "vless",
+            "server": "172.67.156.159",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          },
+          {
+            "tag": "us3",
+            "type": "vless",
+            "server": "172.67.65.116",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          },
+          {
+            "tag": "us4",
+            "type": "vless",
+            "server": "104.16.9.98",
+            "server_port": 8880,
+            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
+            "packet_encoding": "xudp",
+            "transport": {
+              "type": "ws",
+              "path": "/",
+              "headers": {
+                "Host": "youxue.twu5371.workers.dev"
+              },
+              "early_data_header_name": "Sec-WebSocket-Protocol",
+              "max_early_data": 2560
+            }
+          }
+    
+    ],
+
+    "route": {
+        "rules": [
+          {
+              "action": "sniff"
+          },
+          {
+              "protocol": "dns", 
+              "action": "hijack-dns"
+          },
+          {
+              "rule_set": "geosite-category-ads-all",
+               "action": "reject",
+               "method": "drop"
+          },
+          {
+              "ip_is_private": true,
+              "outbound": "direct"
+          },
+          {
+            "rule_set": [                       
+                "geoip-cn",
+                "geosite-cn"                        
+            ],
+            "outbound": "direct"                
+          },
+          {
+            "clash_mode": "direct",
+            "outbound": "direct"
+          },
+          {
+            "clash_mode": "global",
+            "outbound": "Proxy"
+          }
+         
+        ],
+        "auto_detect_interface":true,
+        "final":"Proxy",
+
+        "rule_set": [
+            {
+              "tag": "geosite-category-ads-all",
+              "type": "remote",
+              "format": "binary",
+              "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+              "download_detour": "direct"
+            },
+            {
+                "tag": "geoip-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+                "download_detour": "direct"
+              },
+              {
+                "tag": "geosite-cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+                "download_detour": "direct"
+              },
+              {
+                "tag": "geosite-geolocation-!cn",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://mirror.kingred.eu.org/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+                "download_detour": "direct"
+              }
+        ] 
+    }
+
+
+
+         
+              
+    
+                 
+                 
+                 
+            
+         
+
+   
+
+}
