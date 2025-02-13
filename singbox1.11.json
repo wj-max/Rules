@@ -62,7 +62,7 @@
 
             
           ],
-        "action": "route", 
+        
         "final": "localDns",
         "disable_cache": true,
         "strategy": "ipv4_only"
