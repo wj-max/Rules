@@ -102,7 +102,8 @@
                    "us2",
                    "us3",
                    "us4",
-                   "DE"
+                   "DE",
+                   "JP"
 
                 ]
         },
@@ -131,41 +132,8 @@
               "max_early_data": 2560
             }
           },
-          {
-            "tag": "us2",
-            "type": "vless",
-            "server": "172.67.156.159",
-            "server_port": 8880,
-            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
-            "packet_encoding": "xudp",
-            "transport": {
-              "type": "ws",
-              "path": "/",
-              "headers": {
-                "Host": "youxue.twu5371.workers.dev"
-              },
-              "early_data_header_name": "Sec-WebSocket-Protocol",
-              "max_early_data": 2560
-            }
-          },
-          {
-            "tag": "us3",
-            "type": "vless",
-            "server": "172.67.65.116",
-            "server_port": 8880,
-            "uuid": "9db2358c-dbe5-49ca-8ea4-b05c8296c59d",
-            "packet_encoding": "xudp",
-            "transport": {
-              "type": "ws",
-              "path": "/",
-              "headers": {
-                "Host": "youxue.twu5371.workers.dev"
-              },
-              "early_data_header_name": "Sec-WebSocket-Protocol",
-              "max_early_data": 2560
-            }
-          },
-          {
+
+        {
             "tag": "us4",
             "type": "vless",
             "server": "104.16.9.98",
@@ -182,6 +150,7 @@
               "max_early_data": 2560
             }
           },
+
           {
             "type": "hysteria2",
             "tag": "DE",
@@ -190,6 +159,21 @@
             "up_mbps": 100,
             "down_mbps": 100,
             "password": "b346f69a-a4ab-4a5b-9ce6-d5b19df719cb",
+            "tls": {
+              "enabled": true,
+              "server_name": "www.bing.com",
+              "insecure": true,
+              "alpn": [
+                "h3"
+              ]
+            }
+          },
+          {
+            "type": "hysteria2",
+            "tag": "JP",
+            "server": "47.79.94.51",
+            "server_port": 41325,
+            "password": "63c87525-ad9b-4420-8268-5de5746c36bc",
             "tls": {
               "enabled": true,
               "server_name": "www.bing.com",
