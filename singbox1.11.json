@@ -158,7 +158,7 @@
       "tag": "CDE",
       "server": "dl.kingred.dpdns.org",
       "server_port": 44991,
-      "password": "hyadmin.hyadmin",
+      "password": "sysadmin.sysadmin",
       "tls": {
         "enabled": true,
         "server_name": "",
