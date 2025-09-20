@@ -94,7 +94,7 @@
       "outbounds": [
         "us1",
         "us4",
-        "DE",
+        "HYUS",
         "CDE"
       ]
     },
@@ -138,12 +138,10 @@
     },
     {
       "type": "hysteria2",
-      "tag": "DE",
-      "server": "45.152.240.23",
-      "server_port": 62859,
-      "up_mbps": 100,
-      "down_mbps": 100,
-      "password": "b346f69a-a4ab-4a5b-9ce6-d5b19df719cb",
+      "tag": "HYUS",
+      "server": "n.kingred.dpdns.org",
+      "server_port": 24023,
+      "password": "882ad432-f787-4023-9aec-db0035b1e066",
       "tls": {
         "enabled": true,
         "server_name": "www.bing.com",
