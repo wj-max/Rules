@@ -24,6 +24,8 @@
         "tag": "proxyDns",
         "type": "tls",
         "server":"8.8.8.8",
+        "server_port": "853",        
+        "tls_server_name": "dns.google", 
         "detour": "Proxy"
       },
       {
@@ -31,6 +33,8 @@
         "type": "https",
         "server": "223.5.5.5",
         "path": "/dns-query",
+        "server_port": "443",
+        "tls_server_name": "dns.alidns.com",   
         "detour": "direct"
       }
     ],
@@ -103,7 +107,8 @@
     },
     {
       "tag": "direct",
-      "type": "direct"
+      "type": "direct",
+      "override_address": "1.1.1.1"
     },
     {
       "tag": "us1",
