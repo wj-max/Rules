@@ -136,21 +136,21 @@
       }
     },
     {
+      "type": "hysteria2",
+      "tag": "jp",
       "server": "udp.eu-central-1.clawcloudrun.com",
       "server_port": 37416,
       "up_mbps": 100,
       "down_mbps": 100,
       "password": "81e70d5f-c409-447b-84b0-22b81b6f7200",
-      "type": "hysteria2",
-      "tag": "jp",
       "tls": {
         "enabled": true,
         "server_name": "www.bing.com",
         "insecure": true,
         "alpn": [
           "h3"
-        ],
-        "record_fragment": true
+        ]
+        
       }
     }
    
