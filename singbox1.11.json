@@ -94,8 +94,7 @@
       "outbounds": [
         "us1",
         "us4",
-        "HYUS",
-        "CDE"
+        "jp"
       ]
     },
     {
@@ -137,32 +136,24 @@
       }
     },
     {
+      "server": "udp.eu-central-1.clawcloudrun.com",
+      "server_port": 37416,
+      "up_mbps": 100,
+      "down_mbps": 100,
+      "password": "81e70d5f-c409-447b-84b0-22b81b6f7200",
       "type": "hysteria2",
-      "tag": "HYUS",
-      "server": "n.kingred.dpdns.org",
-      "server_port": 24023,
-      "password": "882ad432-f787-4023-9aec-db0035b1e066",
+      "tag": "jp",
       "tls": {
         "enabled": true,
         "server_name": "www.bing.com",
         "insecure": true,
         "alpn": [
           "h3"
-        ]
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "CDE",
-      "server": "dl.kingred.dpdns.org",
-      "server_port": 44991,
-      "password": "sysadmin.sysadmin",
-      "tls": {
-        "enabled": true,
-        "server_name": "",
-        "insecure": true
+        ],
+        "record_fragment": true
       }
     }
+   
   ],
   "route": {
     "rules": [
