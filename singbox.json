@@ -62,7 +62,7 @@
   ],
   "outbounds": [
      {
-      "tag": "Proxy",
+      "tag": "proxy",
       "type": "selector",
       "outbounds": [
         "sg",
