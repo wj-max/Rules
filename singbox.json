@@ -61,6 +61,16 @@
     }
   ],
   "outbounds": [
+     {
+      "tag": "Proxy",
+      "type": "selector",
+      "outbounds": [
+        "sg",
+        "jp6",
+        "us",
+        "us3"
+      ]
+    },
     {
       "server": "sg2.dexlos.com",
       "server_port": 20397,
