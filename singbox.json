@@ -61,82 +61,130 @@
     }
   ],
   "outbounds": [
-     {
+    {
       "tag": "proxy",
       "type": "selector",
-      "outbounds": [
-        "sg",
-        "jp6",
-        "us",
-        "us3"
-      ]
+      "outbounds": ["sg2", "tw1", "tw8", "hk2"]
     },
     {
-      "server": "sg2.dexlos.com",
-      "server_port": 20397,
-      "up_mbps": 100,
-      "down_mbps": 100,
-      "password": "9B1B3BEB-B469-4624-9242-CF9976658ABF",
-      "type": "hysteria2",
-      "tag": "sg",
+      "server": "hk2-r.link-t7.com",
+      "server_port": 10127,
+      "uuid": "8865BEEA-050E-452D-835C-31A2A2B6DEE9",
+      "packet_encoding": "xudp",
+      "type": "vless",
+      "tag": "hk2",
       "tls": {
         "enabled": true,
-        "server_name": "sg2.dexlos.com",
+        "server_name": "s0.awsstatic.com",
         "insecure": false,
-        "record_fragment": true
-      }
-    },
-    {
-      "server": "jp6.dexlos.com",
-      "server_port": 21113,
-      "up_mbps": 100,
-      "down_mbps": 100,
-      "password": "9B1B3BEB-B469-4624-9242-CF9976658ABF",
-      "type": "hysteria2",
-      "tag": "jp6",
-      "tls": {
-        "enabled": true,
-        "server_name": "jp6.dexlos.com",
-        "insecure": false,
-        "record_fragment": true
-      }
-    },
-    {
-      "server": "us4.dexlos.com",
-      "server_port": 20718,
-      "up_mbps": 100,
-      "down_mbps": 100,
-      "password": "9B1B3BEB-B469-4624-9242-CF9976658ABF",
-      "type": "hysteria2",
-      "tag": "us",
-      "tls": {
-        "enabled": true,
-        "server_name": "us4.dexlos.com",
-        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE",
+          "short_id": "686c0ef0"
+        },
+        "fragment": true,
         "record_fragment": true
       },
-      "obfs": {
-        "type": "salamander",
-        "password": "xK9mN2pLq5vR8wB3"
+      "transport": {
+        "type": "grpc",
+        "service_name": "update",
+        "idle_timeout": "60s",
+        "ping_timeout": "20s",
+        "permit_without_stream": false
       }
     },
     {
-      "server": "us3.dexlos.com",
-      "server_port": 20547,
-      "up_mbps": 100,
-      "down_mbps": 100,
-      "password": "9B1B3BEB-B469-4624-9242-CF9976658ABF",
-      "type": "hysteria2",
-      "tag": "us3",
+      "server": "tw1.dexlos.com",
+      "server_port": 8080,
+      "uuid": "8865BEEA-050E-452D-835C-31A2A2B6DEE9",
+      "password": "8865BEEA-050E-452D-835C-31A2A2B6DEE9",
+      "congestion_control": "bbr",
+      "type": "tuic",
+      "tag": "tw1",
       "tls": {
         "enabled": true,
-        "server_name": "us3.dexlos.com",
+        "server_name": "tw1.dexlos.com",
         "insecure": false,
+        "alpn": ["h3"],
+        "fragment": true,
         "record_fragment": true
+      }
+    },
+    {
+      "server": "tw8.dexlos.com",
+      "server_port": 8080,
+      "uuid": "8865BEEA-050E-452D-835C-31A2A2B6DEE9",
+      "password": "8865BEEA-050E-452D-835C-31A2A2B6DEE9",
+      "congestion_control": "bbr",
+      "type": "tuic",
+      "tag": "tw8",
+      "tls": {
+        "enabled": true,
+        "server_name": "tw8.dexlos.com",
+        "insecure": false,
+        "alpn": ["h3"],
+        "fragment": true,
+        "record_fragment": true
+      }
+    },
+     {
+      "tag": "sg2",
+      "protocol": "hysteria",
+      "settings": {
+        "address": "sg2.dexlos.com",
+        "port": 20330,
+        "version": 2
       },
-      "obfs": {
-        "type": "salamander",
-        "password": "xK9mN2pLq5vR8wB3"
+      "streamSettings": {
+        "network": "hysteria",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "sg2.dexlos.com"
+        },
+        "hysteriaSettings": {
+          "version": 2,
+          "auth": "8865BEEA-050E-452D-835C-31A2A2B6DEE9"
+        },
+        "finalmask": {
+          "udp": [],
+          "quicParams": {
+            "congestion": "brutal",
+            "brutalUp": "100mbps",
+            "brutalDown": "100mbps"
+          },
+          "tcp": [
+            {
+              "type": "fragment",
+              "settings": {
+                "header": null,
+                "value": null,
+                "password": null,
+                "url": null,
+                "stunServers": null,
+                "packetSize": null,
+                "packets": "tlshello",
+                "length": "100-200",
+                "delay": "10-20",
+                "lengths": [
+                  "100-200"
+                ],
+                "delays": [
+                  "10-20"
+                ],
+                "maxSplit": 0,
+                "reset": null,
+                "noise": null
+              }
+            }
+          ]
+        }
+      },
+      "mux": {
+        "enabled": false
       }
     },
     {
