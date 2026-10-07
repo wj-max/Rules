@@ -131,60 +131,20 @@
         "record_fragment": true
       }
     },
-     {
+    {
+      "server": "sg2.dexlos.com",
+      "server_port": 20330,
+      "up_mbps": 100,
+      "down_mbps": 100,
+      "password": "8865BEEA-050E-452D-835C-31A2A2B6DEE9",
+      "type": "hysteria2",
       "tag": "sg2",
-      "protocol": "hysteria",
-      "settings": {
-        "address": "sg2.dexlos.com",
-        "port": 20330,
-        "version": 2
-      },
-      "streamSettings": {
-        "network": "hysteria",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "sg2.dexlos.com"
-        },
-        "hysteriaSettings": {
-          "version": 2,
-          "auth": "8865BEEA-050E-452D-835C-31A2A2B6DEE9"
-        },
-        "finalmask": {
-          "udp": [],
-          "quicParams": {
-            "congestion": "brutal",
-            "brutalUp": "100mbps",
-            "brutalDown": "100mbps"
-          },
-          "tcp": [
-            {
-              "type": "fragment",
-              "settings": {
-                "header": null,
-                "value": null,
-                "password": null,
-                "url": null,
-                "stunServers": null,
-                "packetSize": null,
-                "packets": "tlshello",
-                "length": "100-200",
-                "delay": "10-20",
-                "lengths": [
-                  "100-200"
-                ],
-                "delays": [
-                  "10-20"
-                ],
-                "maxSplit": 0,
-                "reset": null,
-                "noise": null
-              }
-            }
-          ]
-        }
-      },
-      "mux": {
-        "enabled": false
+      "tls": {
+        "enabled": true,
+        "server_name": "sg2.dexlos.com",
+        "insecure": false,
+        "fragment": true,
+        "record_fragment": true
       }
     },
     {
