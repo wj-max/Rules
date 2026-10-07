@@ -64,7 +64,7 @@
     {
       "tag": "proxy",
       "type": "selector",
-      "outbounds": ["sg2", "tw1", "tw8", "hk2"]
+      "outbounds": ["hk2", "tw1", "tw8", "sg2"]
     },
     {
       "server": "hk2-r.link-t7.com",
